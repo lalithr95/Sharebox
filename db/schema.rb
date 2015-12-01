@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151130093323) do
+ActiveRecord::Schema.define(version: 20151201090221) do
+
+  create_table "assets", force: :cascade do |t|
+    t.integer  "user_id",                    limit: 4
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.string   "uploaded_file_file_name",    limit: 255
+    t.string   "uploaded_file_content_type", limit: 255
+    t.integer  "uploaded_file_file_size",    limit: 4
+    t.datetime "uploaded_file_updated_at"
+  end
+
+  add_index "assets", ["user_id"], name: "index_assets_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
