@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :assets
+  resources :assets, path: 'master/assets'
   root to: 'home#index'
 
   devise_for :users
