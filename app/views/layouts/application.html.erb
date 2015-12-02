@@ -16,7 +16,7 @@
         <% if user_signed_in? %>
           <%= current_user.email %>
           |
-          <%= link_to 'Sign out', destroy_user_session_path %>
+          <%= link_to 'Sign out', destroy_user_session_path, method: :delete  %>
         <% else %>
           <em>Not Sign In</em>
           <%= link_to 'Sign In', new_user_session_path %>
