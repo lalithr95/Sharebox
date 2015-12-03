@@ -11,4 +11,5 @@
 /log/*
 !/log/.keep
 /tmp
+/assets/*
 /public/system/assets/uploaded_files/*
