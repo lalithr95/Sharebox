@@ -70,6 +70,9 @@ class AssetsController < ApplicationController
     else
       if asset
         send_file asset.uploaded_file.path, type: asset.uploaded_file_content_type, disposition: 'inline'
+      else
+        flash[:error] = 'Sorry Bro! You can\'t access other assets'
+        redirect_to assets_path
       end
     end
   end
