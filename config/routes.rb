@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resources :assets, path: 'master/assets'
   root to: 'home#index'
-  match 'master/download/assets/:id' => 'assets#download', as: 'download'
+  # download route
+  match 'master/download/assets/:id' => 'assets#download', as: 'download', via: :get
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

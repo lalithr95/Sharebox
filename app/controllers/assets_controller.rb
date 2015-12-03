@@ -62,6 +62,18 @@ class AssetsController < ApplicationController
     end
   end
 
+  # GET download asset
+  def download
+    asset = current_user.assets.find_by_id(params[:id])
+    if params[:download]
+      send_file asset.uploaded_file.path, type: asset.uploaded_file_content_type
+    else
+      if asset
+        send_file asset.uploaded_file.path, type: asset.uploaded_file_content_type, disposition: 'inline'
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_asset
