@@ -13,7 +13,7 @@
   <tbody>
     <% @assets.each do |asset| %>
       <tr>
-        <td><%= link_to asset.uploaded_file_file_name, download_url(asset) %></td>
+        <td><%= link_to asset.uploaded_file_file_name, download_url(asset), target: '_blank' %></td>
         <td><%= link_to 'Download', download_url(asset, download: true) %>
         <td><%= link_to 'Show', asset %></td>
         <td><%= link_to 'Edit', edit_asset_path(asset) %></td>

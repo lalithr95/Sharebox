@@ -65,15 +65,16 @@ class AssetsController < ApplicationController
   # GET download asset
   def download
     asset = current_user.assets.find_by_id(params[:id])
-    if params[:download]
-      send_file asset.uploaded_file.path, type: asset.uploaded_file_content_type
-    else
-      if asset
-        send_file asset.uploaded_file.path, type: asset.uploaded_file_content_type, disposition: 'inline'
+    if asset
+      data = open(URI.parse(URI.encode(asset.uploaded_file.url)))
+      if params[:download]
+        send_data data, filename: asset.uploaded_file_file_name 
       else
-        flash[:error] = 'Sorry Bro! You can\'t access other assets'
-        redirect_to assets_path
+        redirect_to asset.uploaded_file.url(:medium), blank: true
       end
+    else
+      flash[:error] = 'Sorry Bro! you can\'t access other assets'
+      redirect_to assets_path
     end
   end
 

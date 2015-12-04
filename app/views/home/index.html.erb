@@ -1,2 +1,20 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<% unless user_signed_in? %>
+	<h1>Welcome to ShareBox</h1> 
+   	<p>File sharing web application you can't ignore.</p> 
+<% else %>
+<div class="asset_list_header">
+	<div class="file_name_header">File Name</div>
+	<div class="file_size_header">File Size</div>
+	<div class="file_last_updated_header">Modified</div>
+</div>
+
+<div class="asset_list">
+	<% @assets.each do |asset| %>
+		<div class="asset_details">
+			<div class="file_name"><%= link_to asset.uploaded_file_file_name, download_url(asset) %></div>
+			<div class="file_size"><%= asset.uploaded_file_file_size %></div>
+			<div class="file_last_updated"><%= asset.uploaded_file_updated_at %></div>
+		</div>
+	<% end %>
+</div>
+<% end %>
