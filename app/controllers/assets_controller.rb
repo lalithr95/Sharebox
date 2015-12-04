@@ -66,11 +66,12 @@ class AssetsController < ApplicationController
   def download
     asset = current_user.assets.find_by_id(params[:id])
     if asset
-      data = open(URI.parse(URI.encode(asset.uploaded_file.url)))
+      # TODO need to handle how user can download files from S3
+      # data = open(asset.uploaded_file.url)
       if params[:download]
-        send_data data, filename: asset.uploaded_file_file_name 
+        send_file asset.uploaded_file.url, filename: asset.uploaded_file_file_name 
       else
-        redirect_to asset.uploaded_file.url(:medium), blank: true
+        redirect_to asset.uploaded_file.url(:medium)
       end
     else
       flash[:error] = 'Sorry Bro! you can\'t access other assets'
