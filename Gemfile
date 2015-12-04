@@ -26,6 +26,7 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'devise'
 gem "nifty-generators", group: :development
 gem "paperclip", "~> 4.3"
+gem 'aws-s3'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
