@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :folders
   resources :assets, path: 'master/assets'
   root to: 'home#index'
   # download route
