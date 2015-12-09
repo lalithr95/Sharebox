@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # download route
   match 'master/download/assets/:id' => 'assets#download', as: 'download', via: :get
   devise_for :users
+  match 'browse/:folder_id' => 'home#browse', as: 'browse', via: :get
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
