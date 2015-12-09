@@ -12,6 +12,9 @@ class HomeController < ApplicationController
   		@folders = @current_folder.children
   		@assets = current_user.assets.order('uploaded_file_file_name DESC')
   		render action: 'index'
+  	else
+  		flash[:error] = "Sorry Bro! You don't have access to other assets"
+  		redirect_to root_url
   	end
   end
 end
