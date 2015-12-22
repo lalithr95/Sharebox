@@ -29,6 +29,10 @@ gem "paperclip", "~> 4.3"
 gem 'aws-s3'
 gem 'aws-sdk', '< 2.0'
 gem 'acts_as_tree'
+group :development do
+  gem 'brakeman', :require => false
+  gem 'dawnscanner', :require => false
+end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
